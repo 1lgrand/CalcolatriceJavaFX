@@ -1,0 +1,33 @@
+#pane{
+    -fx-background-color: linear-gradient(#000000 0%, #393939 100%);
+}
+
+.buttonNumber{
+    -fx-text-alignment: center;
+    -fx-background-color: #696969;
+    -fx-background-radius: 100;
+    -fx-pref-width:55 ;
+    -fx-pref-height:56 ;
+    -fx-font-size:25;
+    -fx-font-weight: 700;
+    -fx-alignment:center;
+    -fx-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.buttonNumber:hover{
+    -fx-background-color: #707070;
+    -fx-background-radius: 100;
+    -fx-font-size: 25;
+    -fx-font-weight: 700;
+    -fx-alignment:center;
+    -fx-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.buttonNumber:pressed{
+    -fx-background-color: #dad8d8;
+    -fx-background-radius: 100;
+    -fx-font-size: 20;
+    -fx-font-weight: 700;
+    -fx-alignment:center;
+    -fx-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
