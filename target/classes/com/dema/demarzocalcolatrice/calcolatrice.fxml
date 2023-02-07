@@ -60,17 +60,17 @@
                   <Font name="Blackadder ITC" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="per" layoutX="145.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickPer" prefHeight="56.0" prefWidth="55.0" styleClass="buttonNumber" stylesheets="@test.css" text="*" textFill="#158000" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="per" layoutX="145.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickPer" prefHeight="56.0" prefWidth="55.0" styleClass="buttonNumber" stylesheets="@test.css" text="*" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font name="Blackadder ITC" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="diviso" layoutX="145.0" layoutY="78.0" mnemonicParsing="false" onAction="#clickDiviso" prefHeight="56.0" prefWidth="55.0" styleClass="buttonNumber" stylesheets="@test.css" text="/" textFill="#158000" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="diviso" layoutX="145.0" layoutY="78.0" mnemonicParsing="false" onAction="#clickDiviso" prefHeight="56.0" prefWidth="55.0" styleClass="buttonNumber" stylesheets="@test.css" text="/" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font name="Blackadder ITC" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="meno" alignment="CENTER" layoutX="145.0" layoutY="78.0" mnemonicParsing="false" onAction="#clickMeno" prefHeight="56.0" prefWidth="55.0" styleClass="buttonNumber" stylesheets="@test.css" text="-" textFill="#158000" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="meno" alignment="CENTER" layoutX="145.0" layoutY="78.0" mnemonicParsing="false" onAction="#clickMeno" prefHeight="56.0" prefWidth="55.0" styleClass="buttonNumber" stylesheets="@test.css" text="-" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font name="Bell MT Bold" size="25.0" />
                </font>
@@ -105,7 +105,7 @@
                   <Font name="Blackadder ITC" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="piu" layoutX="140.0" layoutY="204.0" mnemonicParsing="false" onAction="#clickPiu" prefHeight="56.0" prefWidth="55.0" styleClass="buttonNumber" stylesheets="@test.css" text="+" textFill="#158000" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Button fx:id="piu" layoutX="140.0" layoutY="204.0" mnemonicParsing="false" onAction="#clickPiu" prefHeight="56.0" prefWidth="55.0" styleClass="buttonNumber" stylesheets="@test.css" text="+" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="Blackadder ITC" size="25.0" />
                </font>

@@ -4,13 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class ControllerCalcolatrice {
 
     final int NOPERANDI = 10;
-    final char NOPERATORI = 10;
+    final char NOPERATORI = 8;
 
-    private final int[] operandi = new int[NOPERANDI];
-    private final char[] operatori = new char[NOPERATORI];
+    private int[] operandi = new int[NOPERANDI];
+    private char[] operatori = new char[NOPERATORI];
 
     @FXML
     private Label espressione;
@@ -52,32 +55,51 @@ public class ControllerCalcolatrice {
     @FXML
     private void risultato(){
         double risultato;
-
-
-
-        inserisciOperandi();
+        inserisciOperandiOperatori();
 
     }
 
 
-    private void inserisciOperandi(){
+    private void inserisciOperandiOperatori(){
         String display = espressione.getText();
 
         char trovaOperatore;
 
         int counterOperatori;
 
-        int i,j;
+        int i,j = 0;
 
         for(i=0;i<display.length();i++){
             trovaOperatore = display.charAt(i);
             if(trovaOperatore == '+' || trovaOperatore == '-' || trovaOperatore == '*' || trovaOperatore == '/'){
-                System.out.println("Operatore Trovato a indice " + i);
+                operatori[j] = display.charAt(i);
+                j++;
             }
         }
 
+        operatori = ordinaOperatori(operatori);
+
+
+
     }
 
+
+    private char[] ordinaOperatori(char[] operatori){
+
+        char[] sortedOperatori = new char[NOPERATORI];
+        char[] menoPiu = new char[NOPERATORI];
+        char[] divisoPer = new char[NOPERATORI];
+
+        int i;
+
+        for(i=0; i<operatori.length; i++){
+
+        }
+
+
+
+
+    }
 
 // Gestione Dei Bottoni
     @FXML
