@@ -54,52 +54,14 @@ public class ControllerCalcolatrice {
 
     @FXML
     private void risultato(){
-        double risultato;
-        inserisciOperandiOperatori();
-
-    }
-
-
-    private void inserisciOperandiOperatori(){
-        String display = espressione.getText();
-
-        char trovaOperatore;
-
-        int counterOperatori;
-
-        int i,j = 0;
-
-        for(i=0;i<display.length();i++){
-            trovaOperatore = display.charAt(i);
-            if(trovaOperatore == '+' || trovaOperatore == '-' || trovaOperatore == '*' || trovaOperatore == '/'){
-                operatori[j] = display.charAt(i);
-                j++;
-            }
-        }
-
-        operatori = ordinaOperatori(operatori);
-
+        String s = espressione.getText();
 
 
     }
 
 
-    private char[] ordinaOperatori(char[] operatori){
-
-        char[] sortedOperatori = new char[NOPERATORI];
-        char[] menoPiu = new char[NOPERATORI];
-        char[] divisoPer = new char[NOPERATORI];
-
-        int i;
-
-        for(i=0; i<operatori.length; i++){
-
-        }
 
 
-
-
-    }
 
 // Gestione Dei Bottoni
     @FXML
