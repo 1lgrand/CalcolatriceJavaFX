@@ -1,32 +1,25 @@
 package com.dema.demarzocalcolatrice;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class ControllerCalcolatrice {
 
-    final int NOPERANDI = 10;
-    final char NOPERATORI = 8;
 
-    private int[] operandi = new int[NOPERANDI];
-    private char[] operatori = new char[NOPERATORI];
+    //Flags
+    Boolean operatoreInserito = false;
+    char operatoreCliccato = 'z';
+
 
     @FXML
     private Label espressione;
 
-    @FXML
-    private Button uno,due,tre,quattro,cinque,sei,sette,otto,nove,piu,meno,diviso,per;
 
 
     /*
     Questa funzione consente all'utente di cancellare l'ultimo numero dell'espressione
     Per evitare di dover cancellare tutta l'espressione
     */
-
     @FXML
     protected void cancellaUltimoNumero(){
         int i;
@@ -46,21 +39,64 @@ public class ControllerCalcolatrice {
     per evitare di andare in "overflow"
      */
     private Boolean maxCaratteri(){
-
         String s = espressione.getText();
-
         return s.length() + 1 > 16;
     }
 
     @FXML
     private void risultato(){
-        String s = espressione.getText();
+        String stringEspressione = espressione.getText();
 
+        //La classe StringBuilder consente di lavorare meglio con le stringhe
+        StringBuilder op1 = new StringBuilder();
+        StringBuilder op2 = new StringBuilder();
+        float iop1,iop2;
+
+        int opIndex;
+
+        float risultato;
+
+        opIndex = stringEspressione.indexOf(operatoreCliccato);
+
+        for(int i = 0;i<opIndex;i++){
+            op1.append(stringEspressione.charAt(i));
+        }
+
+        for (int i=opIndex+1;i<stringEspressione.length();i++){
+            op2.append(stringEspressione.charAt(i));
+        }
+
+        iop1 = Float.parseFloat(op1.toString());
+        iop2 = Float.parseFloat(op2.toString());
+
+        switch (operatoreCliccato){
+            case '+':
+                risultato=iop1 + iop2;
+                espressione.setText(String.valueOf(risultato));
+                break;
+            case '-':
+                risultato=iop1 - iop2;
+                espressione.setText(String.valueOf(risultato));
+                break;
+
+            case '*':
+                risultato=iop1 * iop2;
+                espressione.setText(String.valueOf(risultato));
+                break;
+
+            case '/':
+                risultato=iop1 / iop2;
+                espressione.setText(String.valueOf(risultato));
+                break;
+
+            case 'z':
+                espressione.setText(espressione.getText());
+                break;
+        }
+
+        operatoreInserito = false;
 
     }
-
-
-
 
 
 // Gestione Dei Bottoni
@@ -69,7 +105,6 @@ public class ControllerCalcolatrice {
         if(!maxCaratteri()){
             espressione.setText(espressione.getText()+"0");
         }
-
     }
 
     @FXML
@@ -137,29 +172,37 @@ public class ControllerCalcolatrice {
 
     @FXML
     protected void clickPiu(){
-
         String s = espressione.getText();
-
-        if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-' || s.charAt(s.length()-1) == '/' || s.charAt(s.length()-1) == '*'){
-            espressione.setText(espressione.getText());
+        if(operatoreInserito){
+                risultato();
         }else{
-            if(!maxCaratteri()){
-                espressione.setText(espressione.getText()+"+");
+            if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-' || s.charAt(s.length()-1) == '/' || s.charAt(s.length()-1) == '*'){
+                espressione.setText(espressione.getText());
+            }else{
+                if(!maxCaratteri()){
+                    operatoreCliccato = '+';
+                    espressione.setText(espressione.getText()+"+");
+                    operatoreInserito = true;
+                }
             }
         }
-
-
     }
 
     @FXML
     protected void clickPer(){
         String s = espressione.getText();
 
-        if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-' || s.charAt(s.length()-1) == '/' || s.charAt(s.length()-1) == '*'){
-            espressione.setText(espressione.getText());
+        if(operatoreInserito){
+            risultato();
         }else{
-            if(!maxCaratteri()){
-                espressione.setText(espressione.getText()+"*");
+            if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-' || s.charAt(s.length()-1) == '/' || s.charAt(s.length()-1) == '*'){
+                espressione.setText(espressione.getText());
+            }else{
+                if(!maxCaratteri()){
+                    operatoreCliccato = '*';
+                    espressione.setText(espressione.getText()+"*");
+                    operatoreInserito = true;
+                }
             }
         }
     }
@@ -167,12 +210,17 @@ public class ControllerCalcolatrice {
     @FXML
     protected void clickDiviso(){
         String s = espressione.getText();
-
-        if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-' || s.charAt(s.length()-1) == '/' || s.charAt(s.length()-1) == '*'){
-            espressione.setText(espressione.getText());
+        if(operatoreInserito){
+            risultato();
         }else{
-            if(!maxCaratteri()){
-                espressione.setText(espressione.getText()+"/");
+            if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-' || s.charAt(s.length()-1) == '/' || s.charAt(s.length()-1) == '*'){
+                espressione.setText(espressione.getText());
+            }else{
+                if(!maxCaratteri()){
+                    operatoreCliccato = '/';
+                    espressione.setText(espressione.getText()+"/");
+                    operatoreInserito = true;
+                }
             }
         }
     }
@@ -181,11 +229,17 @@ public class ControllerCalcolatrice {
     protected void clickMeno(){
         String s = espressione.getText();
 
-        if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-' || s.charAt(s.length()-1) == '/' || s.charAt(s.length()-1) == '*'){
-            espressione.setText(espressione.getText());
+        if(operatoreInserito){
+            risultato();
         }else{
-            if(!maxCaratteri()){
-                espressione.setText(espressione.getText()+"-");
+            if(s.charAt(s.length()-1) == '+' || s.charAt(s.length()-1) == '-' || s.charAt(s.length()-1) == '/' || s.charAt(s.length()-1) == '*'){
+                espressione.setText(espressione.getText());
+            }else{
+                if(!maxCaratteri()){
+                    operatoreCliccato = '-';
+                    espressione.setText(espressione.getText()+"-");
+                    operatoreInserito = true;
+                }
             }
         }
     }
@@ -193,7 +247,7 @@ public class ControllerCalcolatrice {
     @FXML
     protected void deleteAll(){
         espressione.setText("");
+        operatoreInserito = false;
     }
-
 
 }
